@@ -1,0 +1,19 @@
+{
+  "name": "ktruittg/it328/sun-city",
+  "authors": [
+    {
+      "name": "Kat Truitt",
+      "email": "ktruitt@mail.greenriver.edu"
+    },
+    {
+      "name": "Carmen Gallardo",
+      "email": "cgallardo@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/"]
+  }
+}
