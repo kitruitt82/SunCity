@@ -1,5 +1,5 @@
 <?php
-require '/home2/mgallar1/config.php';
+require '/home2/mgallar1/public_html/328/config.php';
 
 /**
  * 05/23/2019
@@ -58,18 +58,25 @@ class Database
         return $result;
     }
 
-//    function getDetails($sid)
-//    {
-//        $sql = "SELECT * FROM student WHERE sid = :sid";
-//
-//        $statement = $this->_dbh->prepare($sql);
-//
-//        //2.prepare statement
-//        $statement->bindParam(':sid', $sid, PDO::PARAM_STR);
-//
-//        $statement->execute();
-//
-//        $row = $statement->fetch(PDO::FETCH_ASSOC);
-//        return $row;
-//    }
+    /**
+     * This makes a request to the database and then returns information from
+     * the user
+     * @return String, returns the query from the database
+     */
+    function getAdmin($user)
+    {
+        //Define the query
+        $sql = "SELECT user,pass FROM admin WHERE user=:user;";
+
+        $statement = $this->_dbh->prepare($sql);
+
+        $statement->bindParam(':user', $user, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
 }
