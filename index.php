@@ -47,4 +47,26 @@ $f3->route('GET /', function($f3)
 //    echo $template->render('views/some-admin-page');
 });
 
+$f3->route('GET|POST /administration', function($f3)
+{
+    global $db;
+
+    //check if user made attempt to login
+    if(!empty($_POST))
+    {
+        $user=$_POST['user'];
+        $pass = $_POST['pass'];
+
+        $admin=$db->getAdmin($user);
+
+        //add to the hive
+        $f3->set('admin', $admin);
+        $f3->set('user',$user);
+        $f3->set('pass', $pass);
+    }
+
+    $template = new Template();
+    echo $template->render('views/pending-orders.html');
+});
+
 $f3->run();
