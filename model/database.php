@@ -1,5 +1,5 @@
 <?php
-require '/home2/mgallar1/public_html/328/config.php';
+require '/home/ktruittg/config-student.php';
 
 /**
  * 05/23/2019

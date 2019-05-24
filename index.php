@@ -25,12 +25,12 @@ $f3->set('DEBUG', 3);
 //instantiate database object
 $db = new Database();
 
-/*//default route
+//default route
 $f3->route('GET /', function()
 {
     $template = new Template();
     echo $template->render('views/home.html');
-});*/
+});
 //This route links to a survey
 $f3->route('GET /', function($f3)
 {
