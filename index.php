@@ -32,6 +32,22 @@ $db = new Database();
     echo $template->render('views/home.html');
 });*/
 
+//route when 'home' is clicked
+/*$f3->route('GET /home', function(){
+
+    $view = new Template();
+    echo $view->render("views/home.html");
+
+});*/
+
+//route when 'reservations' is clicked
+/*$f3->route('GET /reservations', function(){
+
+    $view = new Template();
+    echo $view->render("views/reservations.html");
+
+});*/
+
 //This route links to a survey
 $f3->route('GET /', function($f3)
 {
