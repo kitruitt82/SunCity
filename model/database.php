@@ -1,5 +1,6 @@
 <?php
-require '/home/ktruittg/config-student.php';
+$user = $_SERVER['USER'];
+require "/home/$user/config.php";
 
 /**
  * 05/23/2019

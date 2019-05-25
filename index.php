@@ -21,16 +21,17 @@ $f3 = Base::instance();
 //Turn on Fat-Free error reporting
 $f3->set('DEBUG', 3);
 
-
+//print_r($_SERVER);
 //instantiate database object
 $db = new Database();
 
-//default route
-$f3->route('GET /', function()
+//default route to home page
+/*$f3->route('GET /', function()
 {
     $template = new Template();
     echo $template->render('views/home.html');
-});
+});*/
+
 //This route links to a survey
 $f3->route('GET /', function($f3)
 {
