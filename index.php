@@ -26,42 +26,26 @@ $f3->set('DEBUG', 3);
 $db = new Database();
 
 //default route to home page
-/*$f3->route('GET /', function()
+$f3->route('GET /', function()
 {
     $template = new Template();
     echo $template->render('views/home.html');
-});*/
+});
 
 //route when 'home' is clicked
-/*$f3->route('GET /home', function(){
+$f3->route('GET /home', function(){
 
     $view = new Template();
     echo $view->render("views/home.html");
 
-});*/
+});
 
 //route when 'reservations' is clicked
-/*$f3->route('GET /reservations', function(){
+$f3->route('GET /reservations', function(){
 
     $view = new Template();
     echo $view->render("views/reservations.html");
 
-});*/
-
-//This route links to a survey
-$f3->route('GET /', function($f3)
-{
-    global $db;
-    $reservations=$db->getPendingOrders();
-
-    //Test the Database function
-    foreach ($reservations as $row) {
-        echo "<p>" . $row['fname'] . ", " . $row['lname'] . ", "
-            . $row['event_id'] . "</p>";
-    }
-
-//    $template = new Template();
-//    echo $template->render('views/some-admin-page');
 });
 
 $f3->route('GET|POST /administration', function($f3)
