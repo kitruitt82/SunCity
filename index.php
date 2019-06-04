@@ -29,8 +29,10 @@ $db = new Database();
 
 $f3->route('GET /', function()
 {
-    $party = new Bachelorette(5,"","");
-    echo $party->getName();
+    $view = new Template();
+    echo $view->render("views/home.html");
+    //$party = new Bachelorette(5,"","");
+    //echo $party->getName();
 });
 //default route to home page
 //$f3->route('GET /', function()
@@ -44,6 +46,12 @@ $f3->route('GET /home', function(){
 
     $view = new Template();
     echo $view->render("views/home.html");
+
+});
+$f3->route('GET /wineries',function(){
+
+    $view = new Template();
+    echo $view->render("views/wineries.html");
 
 });
 

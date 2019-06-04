@@ -24,6 +24,11 @@ h1{
 #nav-header{
     background: #460019;
 }
+/* layout for Yakima Valley winery historical information */
+#historical-info{
+    margin-top: 225px;
+    margin-right:0;
+}
 
 /* reservations.html */
 .table-style .today {
