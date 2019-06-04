@@ -14,6 +14,8 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+require_once('model/validate-data.php');
+
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -25,12 +27,17 @@ $f3->set('DEBUG', 3);
 //instantiate database object
 $db = new Database();
 
-//default route to home page
 $f3->route('GET /', function()
 {
-    $template = new Template();
-    echo $template->render('views/home.html');
+    $party = new Bachelorette(5,"","");
+    echo $party->getName();
 });
+//default route to home page
+//$f3->route('GET /', function()
+//{
+//    $template = new Template();
+//    echo $template->render('views/home.html');
+//});
 
 //route when 'home' is clicked
 $f3->route('GET /home', function(){
@@ -48,26 +55,40 @@ $f3->route('GET /reservations', function(){
 
 });
 
-$f3->route('GET|POST /administration', function($f3)
-{
-    global $db;
+$f3->route('GET|POST /administration', function($f3) {
 
     //check if user made attempt to login
     if(!empty($_POST))
     {
-        $user=$_POST['user'];
+        $user= $_POST['user'];
         $pass = $_POST['pass'];
 
-        $admin=$db->getAdmin($user);
-
         //add to the hive
-        $f3->set('admin', $admin);
         $f3->set('user',$user);
         $f3->set('pass', $pass);
+
+        if(validUser())
+        {
+            $f3->reroute('/orders');
+        }
     }
 
-    $template = new Template();
-    echo $template->render('views/pending-orders.html');
+    $view = new Template();
+    echo $view->render("views/admin.html");
+});
+
+$f3->route('GET|POST /orders', function($f3){
+    global $db;
+
+    //retrieve all the orders from the database
+    $orders = $db->getPendingOrders();
+
+    $f3->set('orders',$orders);
+
+
+    $view = new Template();
+    echo $view->render("views/pending-orders.html");
+
 });
 
 $f3->run();
