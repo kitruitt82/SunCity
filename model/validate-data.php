@@ -10,17 +10,31 @@
 
 function validUser()
 {
+//    global $f3;
+//
+//    //retrieve the post data
+//    $user = $f3->get('user');
+//    $pass = $f3->get('pass');
+//
+//    //retrieve the database data
+//    $admin = $f3->get('admin');
+//
+//    //compare data, still need to work on password
+//    if(!empty(user) && ($user == $admin['user'])){
+//        return true;
+//    }
+//    $f3->set("errors['login']", "The password, username combination do not match");
+//    return false;
+
     global $f3;
 
     //retrieve the post data
     $user = $f3->get('user');
     $pass = $f3->get('pass');
 
-    //retrieve the database data
-    $admin = $f3->get('admin');
 
     //compare data, still need to work on password
-    if(!empty(user) && ($user == $admin['user'])){
+    if($user =='user123' && $pass == "Friendly123"){
         return true;
     }
     $f3->set("errors['login']", "The password, username combination do not match");
