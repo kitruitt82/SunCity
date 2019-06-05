@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Reservations</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"
+          id="bootstrap-css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="styles/styles.css" type="text/css">
+
+</head>
+<body>
+<div id="main-header" class="jumbotron jumbotron-fluid">
+    <div class="card text-center">
+        <div id="header1" class="card-header">
+            <img id="image1" src="images/logo2.png" alt="logo">
+            <h1>Sun City Wine Tours</h1>
+            <div id="nav-header" class="card-header">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarTogglerDemo01"
+                            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                        <a class="navbar-brand" href="home">Home</a>
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    About Us
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="reservations2">Reservations 2</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="wineries">Wineries</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="reservations" tabindex="-1" aria-disabled="false">
+                                    Reservations</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-body">
+            <div class="row">
+                <div id="include" class="col-sm-6 center">
+                    <!--                    <h1 class="card-title text-left">Rates</h1>-->
+                    <div class="card border-light mb-3 center shadow-lg p-3 mb-5 bg-white rounded"
+                         style="max-width: 28rem;">
+                        <div class="card-header text-center">ALL TOUR PRICES INCLUDE</div>
+                        <div class="card-body">
+                            <ol>
+                                <li class="cup">Visit as many wineries as you like in the 6 hour tour time. Tasting
+                                    fees not included.
+                                    <em>We can also quote prices with tasting fees included for larger groups.</em>
+                                </li>
+                                <li class="cup">
+                                    Passenger Van, Gas, Mileage
+                                </li>
+                                <li class="cup">
+                                    Professional Driver/ Experienced Wine Guide
+                                </li>
+                            </ol>
+                            <p class="card-text">Our Wine Tours offers custom tours, and
+                                <em>do not accept commissions</em> from any wineries. We take you to the wineries you
+                                want, or the ones we think will provide the best experience for your group..
+                            </p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-secondary" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
+                                Disclaimer
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"
+                                                id="exampleModalCenterTitle">Please Read Disclaimer</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Sun city tours and their respective employees, agents, representatives,
+                                                and assigns accept no liability whatsoever for any injury, damage, loss,
+                                                accident, delay, or any other incident which may be caused by the
+                                                negligence, defect, default of any company or person in performing these
+                                                services. Responsibility is not accepted for losses, injury, damages or
+                                                expenses of any kind due to sickness, weather, strikes, hostilities,
+                                                wars, terrorist acts, acts of nature, local laws or other such causes.
+                                                All services and accommodations are subject to the laws and regulations
+                                                of the country in which they are provided. Tour Operator is not
+                                                responsible for any baggage or personal effects of any individual
+                                                participating in the tours / trips arranged by Tour Operator.
+                                                Individual travelers are responsible for purchasing a travel insurance
+                                                policy, if desired, that will cover some of the expenses associated with
+                                                the any personal loss or of luggage
+                                                or personal effects.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="card-title text-left">Make a Reservation</h1>
+                    <h6 id="form-header"> We pick up and drop off anywhere with in <em class="pickup">10 miles</em>
+                        of downtown Yakima. Or anywhere in<strong class="pickup">
+                            <em>Toppenish, Zillah, Grandview, Sunnyside, or Prosser</em></strong></h6>
+                    <form action="#" method="POST">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" name="fname" value="{{ @fname }}"
+                                       placeholder="First name">
+                                <check if="{{ @errors['fname'] }}">
+                                    <span class="err">{{ @errors['fname'] }}</span>
+                                </check>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name= "lname" placeholder="Last name"
+                                       value="{{ @lname }}">
+                                <check if="{{ @errors['lname'] }}">
+                                    <span class="err">{{ @errors['lname'] }}</span>
+                                </check><br>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <check if="{{ @errors['email'] }}">
+                                <span class="err">{{ @errors['email'] }}</span>
+                            </check>
+                            <label for="exampleFormControlInput1">Email address</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                   placeholder="name@example.com" value= "{{ @email }}">
+                        </div>
+                        <div class="form-group">
+                            <check if="{{ @errors['phone'] }}">
+                                <span class="err">{{ @errors['phone'] }}</span>
+                            </check>
+                            <label for="exampleFormControlInput2">Phone Number</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput2"
+                                   placeholder="4258675309" value="{{ @phone }}">
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="exampleFormControlSelect1">Event Type</label>
+                                <select class="form-control" name="request" id="exampleFormControlSelect1">
+                                    <option>-Select-</option>
+                                    <option value="bachelorette">Bachelorette</option>
+                                    <option value="corporate">Corporate</option>
+                                    <option value="party">Party</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlSelect2">Group Size/$Price</label>
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                    <option>-Select-</option>
+                                    <option>1 - 6 / $600</option>
+                                    <option>7 - 12 / $700</option>
+                                    <option>Over 12 / Call for larger shuttle van & 56 passenger bus rates</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group datepicker">
+                            <label for="datepicker">Select Tour Date</label>
+                            <input class="datepicker form-control"id ="datepicker"  type="text" size="30">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-secondary" type="submit">Submit form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+<!--        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
+<!--        crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script>
+    $(function (){
+        $( "#datepicker" ).datepicker({
+            numberOfMonths: 2,
+            showButtonPanel: true
+        })});
+</script>
+
+</body>
+</html>

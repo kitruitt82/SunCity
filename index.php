@@ -34,12 +34,7 @@ $f3->route('GET /', function()
     //$party = new Bachelorette(5,"","");
     //echo $party->getName();
 });
-//default route to home page
-//$f3->route('GET /', function()
-//{
-//    $template = new Template();
-//    echo $template->render('views/home.html');
-//});
+
 
 //route when 'home' is clicked
 $f3->route('GET /home', function(){
@@ -55,11 +50,62 @@ $f3->route('GET /wineries',function(){
 
 });
 
-//route when 'reservations' is clicked
+//route when 'home' is clicked
 $f3->route('GET /reservations', function(){
 
     $view = new Template();
     echo $view->render("views/reservations.html");
+
+});
+//route when 'reservations' is clicked
+$f3->route('GET|POST /reservations2', function($f3){
+
+    //get data from form
+    if(!empty($_POST)){
+        $first_name = $_POST['fname'];
+        $last_name= $_POST['lname'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $request = $_POST['request'];
+
+        //add data to hive
+        $f3->set('fname',$first_name);
+        $f3->set('lname',$last_name);
+        $f3->set('email',$email);
+        $f3->set('phone',$phone);
+        $f3->set('request',$request);
+
+        if(validRequest()){
+            $_SESSION['fname']= $first_name;
+            $_SESSION['lname']= $last_name;
+            $_SESSION['email']= $email;
+            $_SESSION['phone']= $phone;
+            $_SESSION['request']=$request;
+
+            if(!empty($request) && $_POST['request']==="bachelorette"){
+                $event = new Bachelorette($first_name, $last_name, $email, $phone);
+            }
+            elseif(!empty($request) && $_POST['request']==="corporate"){
+                $event = new Corporate($first_name, $last_name, $email, $phone);
+            }
+            else{
+                $event = new Party($first_name, $last_name, $email, $phone);
+            }
+
+            $_SESSION['event'] = $event;
+        }
+        $f3->reroute('/summary');
+
+    }
+    $view = new Template();
+    echo $view->render("views/reservations2.html");
+
+});
+
+$f3->route('GET /summary',function(){
+
+    $view = new Template();
+    echo $view->render("views/summary.html");
 
 });
 

@@ -9,11 +9,12 @@
 h1{
     font-family: Tenor Sans;
     text-shadow:1px 1px #0f0009;
+    color:#e9a401;
 }
 /* Main header*/
 #main-header{
     background-color:#460019;
-    color: #e9a401;
+    color: #0f0009; /*#e9a401;*/
 }
 /* Card Header */
 #header1{
@@ -26,14 +27,53 @@ h1{
 }
 /* layout for Yakima Valley winery historical information */
 #historical-info{
-    margin-top: 225px;
+    margin-top: 100px;
     margin-right:0;
+}
+/* Reservation Pick up*/
+.pickup{
+    color: #ffffff;
+    text-shadow:2px 2px #0f0009;
+}
+/* Reservations */
+.cup {
+    list-style-image: url("http://ktruitt.greenriverdev.com/it328/newproject/images/16x16.png");
+    padding-top:10px;
+    margin-top:5px;
+}
+/* reservations */
+label{
+    color: #e9a401;
+}
+/* Reservations form header*/
+#form-header{
+    color: #e9a401;
+}
+.winery{
+    color: #e9a401;
+}
+
+.winery-name{
+    font-weight: bold;
+    font-style: italic;
+    color:#ffffff;
+    text-shadow:2px 2px #0f0009;
 }
 
 /* reservations.html */
 .table-style .today {
     background: #2A3F54; color: #ffffff;
 }
+
+/*.card-body{*/
+/*    background-image:url("http://ktruitt.greenriverdev.com/it328/newproject/images/grapes-3550742_1280.jpg");*/
+/*    background-position: center;*/
+/*    background-size: 300px;*/
+/*    background-repeat: space;*/
+/*    background-blend-mode: soft-light;*/
+
+/*}*/
+
 .table-style th:nth-of-type(7),td:nth-of-type(7) {
     color: blue;
 }
