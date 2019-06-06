@@ -8,8 +8,8 @@
  */
 class Corporate extends Events
 {
-    public function __construct($group_size, $price, $_start_time, $name = "Coorporate")
+    public function __construct($description, $transportation="black limo", $name = "Corporate")
     {
-        parent::__construct($group_size, $price, $_start_time, $name);
+        parent::__construct($description, $transportation, $name);
     }
 }

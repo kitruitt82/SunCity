@@ -10,23 +10,21 @@
 class Events
 {
     private $_name;
-    private $_group_size;
-    private $_price;
-    private $_start_time;
+    private $_description;
+    private $_transportation;
+
 
     /**
      * Events constructor.
      * @param $name, the name of the event
-     * @param $group_size, the size of people in the event
-     * @param $price, the price of the event
-     * @param $_start_time, the time the event starts
+     * @param $description, the size of people in the event
+     * @param $transportation, the price of the event
      */
-    public function __construct($name,$group_size,$price,$_start_time)
+    public function __construct($description,$transportation,$name)
     {
         $this->_name = $name;
-        $this->_group_size = $group_size;
-        $this->_price = $price;
-        $this->_start_time = $_start_time;
+        $this->_description = $description;
+        $this->_transportation = $transportation;
     }
 
     /**
@@ -52,56 +50,37 @@ class Events
      * This method returns the number of people reserving the event
      * @return integer
      */
-    public function getGroupSize()
+    public function getDescription()
     {
-        return $this->_group_size;
+        return $this->_description;
     }
 
     /**
      * This method takes a num parameter to set the group size for the event
-     * @param integer $group_size, sets the group size
+     * @param integer $description, sets the group size
      */
-    public function setGroupSize($group_size)
+    public function setDescription($description)
     {
-        $this->_group_size = $group_size;
+        $this->_description = $description;
     }
 
     /**
      * This method returns the price of the event
      * @return float
      */
-    public function getPrice()
+    public function getTransportation()
     {
-        return $this->_price;
+        return $this->_transportation;
     }
 
     /**
      *
      * This method takes a float parameter to set the price of the event
-     * @param float $price, sets the price of the event
+     * @param float $transportation, sets the price of the event
      */
-    public function setPrice($price)
+    public function setTransportation($transportation)
     {
-        $this->_price = $price;
+        $this->_transportation = $transportation;
     }
-
-    /**
-     * This method returns the time the event starts
-     * @return String
-     */
-    public function getStartTime()
-    {
-        return $this->_start_time;
-    }
-
-    /**
-     * This method sets the time the event starts using a string parameter
-     * @param String $start_time
-     */
-    public function setStartTime($start_time)
-    {
-        $this->_start_time = $start_time;
-    }
-
 
 }

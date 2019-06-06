@@ -35,7 +35,7 @@
                                     About Us
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="reservations2">Reservations 2</a>
+                                    <a class="dropdown-item" href="#">Reservations 2</a>
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Something else here</a>
@@ -140,7 +140,7 @@
                                        placeholder="First name">
                                 <check if="{{ @errors['fname'] }}">
                                     <span class="err">{{ @errors['fname'] }}</span>
-                                </check>
+                                </check><br>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control" name= "lname" placeholder="Last name"
@@ -153,7 +153,7 @@
                         <div class="form-group">
                             <check if="{{ @errors['email'] }}">
                                 <span class="err">{{ @errors['email'] }}</span>
-                            </check>
+                            </check><br>
                             <label for="exampleFormControlInput1">Email address</label>
                             <input type="email" class="form-control" id="exampleFormControlInput1"
                                    placeholder="name@example.com" value= "{{ @email }}">
@@ -161,35 +161,61 @@
                         <div class="form-group">
                             <check if="{{ @errors['phone'] }}">
                                 <span class="err">{{ @errors['phone'] }}</span>
-                            </check>
+                            </check><br>
                             <label for="exampleFormControlInput2">Phone Number</label>
                             <input type="text" class="form-control" id="exampleFormControlInput2"
-                                   placeholder="4258675309" value="{{ @phone }}">
+                                   value="{{ @phone }}">
                         </div>
                         <div class="row">
                             <div class="col">
+                                <check if="{{ @errors['event_type'] }}">
+                                    <span class="err">{{ @errors['event_type'] }}</span>
+                                </check><br>
                                 <label for="exampleFormControlSelect1">Event Type</label>
-                                <select class="form-control" name="request" id="exampleFormControlSelect1">
-                                    <option>-Select-</option>
-                                    <option value="bachelorette">Bachelorette</option>
-                                    <option value="corporate">Corporate</option>
-                                    <option value="party">Party</option>
+                                <select class="form-control" name="event_type" id="exampleFormControlSelect1">
+                                    <repeat group=" {{ @events }} " value="{{ @event }}">
+                                        <option  value="{{ @event }}"
+                                            <check if="{{ @event == @event_type }}">
+                                                selected
+                                            </check>>{{ @event }}
+                                        </option>
+                                    </repeat>
                                 </select>
                             </div>
                             <div class="col">
+                                <check if="{{ @errors['groupSize'] }}">
+                                    <span class="err">{{ @errors['groupSize'] }}</span>
+                                </check><br>
                                 <label for="exampleFormControlSelect2">Group Size/$Price</label>
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                    <option>-Select-</option>
-                                    <option>1 - 6 / $600</option>
-                                    <option>7 - 12 / $700</option>
-                                    <option>Over 12 / Call for larger shuttle van & 56 passenger bus rates</option>
+                                <select name="groupSize" class="form-control" id="exampleFormControlSelect2">
+                                    <repeat group=" {{ @size }} " value="{{ @num }}">
+                                        <option  value="{{ @num }}"
+                                        <check if="{{ @num == @groupSize }}">
+                                            selected
+                                        </check>>{{ @num }}
+                                        </option>
+                                    </repeat>
                                 </select>
-
                             </div>
                         </div>
-                        <div class="form-group datepicker">
-                            <label for="datepicker">Select Tour Date</label>
-                            <input class="datepicker form-control"id ="datepicker"  type="text" size="30">
+                        <div class="row">
+                            <div class="col datepicker">
+                                <check if="{{ @errors['reserve'] }}">
+                                    <span class="err">{{ @errors['reserve'] }}</span>
+                                </check><br>
+                                <label for="datepicker">Select Tour Date</label>
+                                <input class="datepicker form-control" id ="datepicker"  type="text"
+                                       value=" {{ @reserve }}" name="reserve"
+                                       size="30">
+                            </div>
+                            <div class="col">
+                                <check if="{{ @errors['start_time'] }}">
+                                    <span class="err">{{ @errors['start_time'] }}</span>
+                                </check><br>
+                                <label for="time">Start time</label>
+                                <input class="form-control" type="text" id="time" name="start_time"
+                                       value="{{ @start_time }}">
+                            </div>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-secondary" type="submit">Submit form</button>

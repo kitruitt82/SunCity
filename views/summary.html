@@ -35,7 +35,7 @@
                                     About Us
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="reservations2">Reservations 2</a>
+                                    <a class="dropdown-item" href="#">Reservations 2</a>
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Something else here</a>
@@ -60,7 +60,10 @@
     <div class="card-body">
         <h1>Confirmation</h1>
         <div class="row">
-
+            <p>
+                Thank you, {{ $_SESSION['fname'] }} {{ $_SESSION['lname'] }}! We have you booked for {{ $_SESSION['reserve'] }}
+                at {{ $_SESSION['start_time']}}
+            </p>
         </div>
     </div>
 </div>

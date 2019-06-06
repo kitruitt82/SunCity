@@ -8,9 +8,9 @@
  */
 class Party extends Events
 {
-    public function __construct($group_size, $price, $_start_time, $name = "Party")
+    public function __construct($description, $transportation="white shuttle van", $name = "Party")
     {
-        parent::__construct($group_size, $price, $_start_time, $name);
+        parent::__construct($description, $transportation, $name);
     }
 
 }
