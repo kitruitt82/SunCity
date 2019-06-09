@@ -117,7 +117,25 @@ class Database
     function getPendingOrders()
     {
         //Define the query
-        $sql = "SELECT * FROM requests;";
+        $sql = "SELECT * FROM requests WHERE confirm=0;";
+
+        $statement = $this->_dbh->prepare($sql);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    /**
+     * This sends a query request to the database and returns the result
+     * @return String, returns the string result from the query request
+     */
+    function getConfirmOrders()
+    {
+        //Define the query
+        $sql = "SELECT * FROM requests WHERE confirm=1;";
 
         $statement = $this->_dbh->prepare($sql);
 
