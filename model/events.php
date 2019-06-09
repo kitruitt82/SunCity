@@ -20,7 +20,7 @@ class Events
      * @param $description, the size of people in the event
      * @param $transportation, the price of the event
      */
-    public function __construct($description,$transportation,$name)
+    public function __construct($description="",$name,$transportation)
     {
         $this->_name = $name;
         $this->_description = $description;

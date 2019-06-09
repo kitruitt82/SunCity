@@ -8,8 +8,8 @@
  */
 class Bachelorette extends Events
 {
-    public function __construct($description, $transportation="pink limo", $name = "Bachelorette")
+    public function __construct($description, $name = "Bachelorette", $transportation="Pink Limo")
     {
-        parent::__construct($description, $transportation, $name);
+        parent::__construct($description, $name,$transportation);
     }
 }

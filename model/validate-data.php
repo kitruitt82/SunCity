@@ -72,6 +72,16 @@ function validRequest()
         $isValid = false;
         $f3->set("errors['email']", "Please enter a valid email.");
     }
+
+    if (!validDate($f3->get('tour_date'))) {
+        $isValid = false;
+        $f3->set("errors['tour_date']", "Please select a date.");
+    }
+
+    if (!validStartTime($f3->get('start_time'))) {
+        $isValid = false;
+        $f3->set("errors['start_time']", "Please select a time.");
+    }
     return $isValid;
 
 }
@@ -113,5 +123,23 @@ function validEmail($email)
  */
 function validPhone($phone)
 {
-    return !empty($phone) && is_numeric($phone) && strlen($phone)===10 ;
+    return !empty($phone) && is_numeric($phone) && strlen($phone)==10 ;
+}
+
+/**
+ * @param $tour_date $tour_date input
+ * @return bool returns true if date is not empty
+ */
+function validDate($tour_date)
+{
+    return !empty($tour_date);
+}
+
+/**
+ * @param $start_time $start_time input
+ * @return bool return true if not empty
+ */
+function validStartTime($start_time)
+{
+    return !empty($start_time);
 }

@@ -59,7 +59,15 @@ label{
     color:#ffffff;
     text-shadow:2px 2px #0f0009;
 }
-
+/*#custom-form{*/
+/*    display:none;*/
+/*}*/
+.err{
+    color:#ffffff;
+}
+#summary{
+    background-color:#ffffff;
+}
 /* reservations.html */
 .table-style .today {
     background: #2A3F54; color: #ffffff;

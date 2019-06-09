@@ -51,47 +51,64 @@ class Database
         global $f3;
 //        $order_id = $f3->get('order_id');
 //        $purchase_date= $f3->get('purchase_id');
-        $fname=$f3->get('fname');
+        $fname = $f3->get('fname');
         $lname = $f3->get('lname');
-        $reserve = $f3->get('reserve');
         $email = $f3->get('email');
         $phone = $f3->get('phone');
-//        $confirm = $f3->get('confirm');
-//        $event_id = $f3->get('event_id');
+        $event = strtolower($f3->get('event_type'));
+        $group = $f3->get('groupSize');
+        $tour_date = $f3->get('tour_date');
+        $start_time= $f3->get('start_time');
+        $confirm = false;
 
-        //1. define the query
-        $sql = "INSERT INTO requests(fname,lname,reserve,email,phone)
-                    VALUES(:fname,:lname,:reserve,:email,:phone)";
+//        echo 'event type: ' . $event . ' first name: ' . $fname . ' last name: ' . $lname.
+//            ' tour: ' .$tour .' email '. $email .' phone: '. $phone;
+
+        $sql = "SET @event = (SELECT event_id FROM packages WHERE event_type =:event) ;
+                INSERT into requests VALUES (order_id, NOW(), :fname,:lname,:email,:phone,:tour_date,:start_time,
+                :confirm,@event);";
 
         //2. prepare the statement
         $statement = $this->_dbh->prepare($sql);
 
         //3. bind parameters
-//        $statement->bindParam(':order_id', $order_id, PDO::PARAM_INT);
-//        $statement->bindParam(':purchase_date', $purchase_date, PDO::PARAM_INT);
         $statement->bindParam(':fname', $fname, PDO::PARAM_STR);
         $statement->bindParam(':lname', $lname, PDO::PARAM_STR);
-        $statement->bindParam(':reserve', $reserve, PDO::PARAM_STR);
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
-        $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
-//        $statement->bindParam(':confirm', $confirm, PDO::PARAM_STR);
-//        $statement->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $statement->bindParam(':phone', $phone, PDO::PARAM_INT);
+        $statement->bindParam(':event', $event, PDO::PARAM_STR);
+        $statement->bindParam(':tour_date', $tour_date, PDO::PARAM_STR);
+        $statement->bindParam(':start_time', $start_time, PDO::PARAM_STR);
+        $statement->bindParam(':confirm', $confirm, PDO::PARAM_BOOL);
 
         //4. execute the statement
         $statement->execute();
-
-        //5. return the result
-         echo '<h1> it worked</h1>';
     }
 
-    /**
-     *
-     */
-    function insertEvent()
+    function insertCustomizedOrder()
     {
+        global $f3;
+        $event = strtolower($f3->get('event_type'));
+        $eventObject= $f3->get('event');
+        $transportation = $eventObject->getTransportation();
+        $description = $eventObject->getDescription();
+        $name = $eventObject->getName();
 
+        echo 'event_type: '. $event .' event object: '. $eventObject .' event name: ' . $name . ' transportation: ' . $transportation .
+            ' description: ' . $description;
+
+
+        $sql="Set @event = (SELECT event_id FROM requests WHERE event_type = :event);
+        INSERT INTO customized_order VALUES (:name,:description,:transportation,@event,:order_id)";
+
+        $statement= $this->_dbh->prepare($sql);
+
+        $statement->bindParam(':name',$name,PDO::PARAM_STR);
+        $statement->bindParam(':description',$description,PDO::PARAM_STR);
+        $statement->bindParam(':transportation',$transportation,PDO::PARAM_STR);
+
+        $statement->execute;
     }
-
 
     /**
      * This sends a query request to the database and returns the result

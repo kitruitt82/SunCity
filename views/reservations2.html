@@ -151,26 +151,23 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="exampleFormControlInput1">Email address</label>
+                            <input name="email" type="email" class="form-control" id="exampleFormControlInput1"
+                                   placeholder="name@example.com" value= "{{ @email }}">
                             <check if="{{ @errors['email'] }}">
                                 <span class="err">{{ @errors['email'] }}</span>
                             </check><br>
-                            <label for="exampleFormControlInput1">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                   placeholder="name@example.com" value= "{{ @email }}">
                         </div>
                         <div class="form-group">
+                            <label for="exampleFormControlInput2">Phone Number</label>
+                            <input name="phone" type="text" class="form-control" id="exampleFormControlInput2"
+                                   value="{{ @phone }}">
                             <check if="{{ @errors['phone'] }}">
                                 <span class="err">{{ @errors['phone'] }}</span>
                             </check><br>
-                            <label for="exampleFormControlInput2">Phone Number</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput2"
-                                   value="{{ @phone }}">
                         </div>
                         <div class="row">
                             <div class="col">
-                                <check if="{{ @errors['event_type'] }}">
-                                    <span class="err">{{ @errors['event_type'] }}</span>
-                                </check><br>
                                 <label for="exampleFormControlSelect1">Event Type</label>
                                 <select class="form-control" name="event_type" id="exampleFormControlSelect1">
                                     <repeat group=" {{ @events }} " value="{{ @event }}">
@@ -181,11 +178,11 @@
                                         </option>
                                     </repeat>
                                 </select>
+                                <check if="{{ @errors['event_type'] }}">
+                                    <span class="err">{{ @errors['event_type'] }}</span>
+                                </check><br>
                             </div>
                             <div class="col">
-                                <check if="{{ @errors['groupSize'] }}">
-                                    <span class="err">{{ @errors['groupSize'] }}</span>
-                                </check><br>
                                 <label for="exampleFormControlSelect2">Group Size/$Price</label>
                                 <select name="groupSize" class="form-control" id="exampleFormControlSelect2">
                                     <repeat group=" {{ @size }} " value="{{ @num }}">
@@ -196,32 +193,76 @@
                                         </option>
                                     </repeat>
                                 </select>
+                                <check if="{{ @errors['groupSize'] }}">
+                                    <span class="err">{{ @errors['groupSize'] }}</span>
+                                </check><br>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col datepicker">
-                                <check if="{{ @errors['reserve'] }}">
-                                    <span class="err">{{ @errors['reserve'] }}</span>
-                                </check><br>
                                 <label for="datepicker">Select Tour Date</label>
                                 <input class="datepicker form-control" id ="datepicker"  type="text"
-                                       value=" {{ @reserve }}" name="reserve"
-                                       size="30">
+                                       name="tour_date" size="30"  value=" {{ @tour_date }}">
+                                <check if="{{ @errors['tour_date'] }}">
+                                    <span class="err">{{ @errors['tour_date'] }}</span>
+                                </check><br>
                             </div>
                             <div class="col">
+                                <label for="time">Start time</label>
+                                <select name="start_time" class="form-control" id="time">
+                                    <repeat group=" {{ @times }} " value="{{ @start }}">
+                                        <option  value="{{ @start }}"
+                                        <check if="{{ @start == @start_time }}">
+                                            selected
+                                        </check>>{{ @start }}
+                                        </option>
+                                    </repeat>
+                                </select>
                                 <check if="{{ @errors['start_time'] }}">
                                     <span class="err">{{ @errors['start_time'] }}</span>
                                 </check><br>
-                                <label for="time">Start time</label>
-                                <input class="form-control" type="text" id="time" name="start_time"
-                                       value="{{ @start_time }}">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div id="customize" class="col-sm-10 form-check">
+                                <input id="custom" type="checkbox" name="customize" value="checked"
+                                <check if="{{ @customized== 'checked' }}">checked</check>>
+                                <label for="customize">Customize Tour</label>
+                            </div>
+                        </div>
+                        <div id="custom-form" class="row">
+                            <div class="col">
+                                <label for="event_name">Party Name</label>
+                                <input class="form-control" id="event_name" type="text" value="{{ @event_name}}"
+                                       name="event_name">
+                                <label for="time">Transportation</label>
+                                <select name="transportation" class="form-control" id="transportation">
+                                    <repeat group=" {{ @vehicles }} " value="{{ @type }}">
+                                        <option  value="{{ @type }}"
+                                        <check if="{{ @type == @transportation }}">
+                                            selected
+                                        </check>>{{ @type }}
+                                        </option>
+                                    </repeat>
+                                </select>
+                                <check if="{{ @errors['start_time'] }}">
+                                    <span class="err">{{ @errors['start_time'] }}</span>
+                                </check><br>
+
+                            </div>
+                            <div class="col">
+                                <label for="description">Special Requests</label>
+                                <textarea class="form-control" id="description" name="description"
+                                          value="{{ @description}}"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-secondary" type="submit">Submit form</button>
+                            <button class="btn btn-secondary" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
@@ -238,11 +279,23 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script>
+    $(document).ready(function(){$("#custom-form").hide();
+
+    $("#custom").change(function() {
+    if ($(this).val() == 'checked') {
+        $('#custom-form').show();
+    } else {
+        $('#custom-form').hide();
+    }
+    });
+    // $("#custom").trigger("change");
     $(function (){
         $( "#datepicker" ).datepicker({
             numberOfMonths: 2,
-            showButtonPanel: true
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd'
         })});
+    });
 </script>
 
 </body>
