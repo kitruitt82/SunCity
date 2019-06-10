@@ -59,12 +59,15 @@
     <div  class="card-body">
         <h1>Confirmation</h1>
         <div id="summary" class="card-title ">
-            <p>
-                Thank you, {{ $_SESSION['fname'] }} {{ $_SESSION['lname'] }}! We have you booked for
-                {{ $_SESSION['reserve'] }} on {{ $_SESSION['tour_date']}}
-                at {{ $_SESSION['start_time']}}
-            </p>
-            <p id="event"></p>
+            <h4> Thank you, {{ $_SESSION['fname'] }} {{ $_SESSION['lname'] }}!</h4>
+            <ul>
+                <li>Party name: {{ $_SESSION['event']->getName() }}</li>
+                <li>Transportation:  {{ $_SESSION['event']->getTransportation() }}</li>
+                <li>Tour date: {{ $_SESSION['tour_date'] }}</li>
+                <li>Start: {{ $_SESSION['start_time'] }}</li>
+                <li>Group size / Price: {{ $_SESSION['groupSize'] }}</li>
+                <li>Special requests: {{ $_SESSION['event']->getDescription() }}</li>
+            </ul>
         </div>
     </div>
 </div>

@@ -44,19 +44,17 @@ class Database
 
     /**
      * This function adds a request to the database
-     * @return mixed void
+     * @return mixed void return void
      */
     function insertRequest()
     {
         global $f3;
-//        $order_id = $f3->get('order_id');
-//        $purchase_date= $f3->get('purchase_id');
+
         $fname = $f3->get('fname');
         $lname = $f3->get('lname');
         $email = $f3->get('email');
         $phone = $f3->get('phone');
         $event = strtolower($f3->get('event_type'));
-        $group = $f3->get('groupSize');
         $tour_date = $f3->get('tour_date');
         $start_time= $f3->get('start_time');
         $confirm = false;
@@ -64,14 +62,15 @@ class Database
 //        echo 'event type: ' . $event . ' first name: ' . $fname . ' last name: ' . $lname.
 //            ' tour: ' .$tour .' email '. $email .' phone: '. $phone;
 
+        //1. Create sql query
         $sql = "SET @event = (SELECT event_id FROM packages WHERE event_type =:event) ;
                 INSERT into requests VALUES (order_id, NOW(), :fname,:lname,:email,:phone,:tour_date,:start_time,
                 :confirm,@event);";
 
-        //2. prepare the statement
+        //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
 
-        //3. bind parameters
+        //3. Bind parameters
         $statement->bindParam(':fname', $fname, PDO::PARAM_STR);
         $statement->bindParam(':lname', $lname, PDO::PARAM_STR);
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
@@ -85,29 +84,45 @@ class Database
         $statement->execute();
     }
 
+    /**
+     * This function inserts customized orders to the database
+     * @return void
+     */
     function insertCustomizedOrder()
     {
         global $f3;
-        $event = strtolower($f3->get('event_type'));
+        //Get event object
         $eventObject= $f3->get('event');
+        //Get request type
+        $event = $f3->get('event_type');
+        //Retrieve last insert query
+        $latest = $this->_dbh->lastInsertId();
+        //Get event object data
         $transportation = $eventObject->getTransportation();
         $description = $eventObject->getDescription();
         $name = $eventObject->getName();
 
-        echo 'event_type: '. $event .' event object: '. $eventObject .' event name: ' . $name . ' transportation: ' . $transportation .
-            ' description: ' . $description;
+//        echo 'event_type: '. $event .' event object: '. $eventObject .' event name: ' . $name .
+//            ' transportation: ' . $transportation .
+//            ' description: ' . $description;
 
+        //1. Create sql query
+        $sql2= "SET @event = (SELECT event_id FROM packages WHERE event_type =:event);
+                INSERT INTO customized_order VALUES 
+                (:latest, @event,:name,:description,:transportation )";
 
-        $sql="Set @event = (SELECT event_id FROM requests WHERE event_type = :event);
-        INSERT INTO customized_order VALUES (:name,:description,:transportation,@event,:order_id)";
+        //2. Prepare the statement
+        $statement= $this->_dbh->prepare($sql2);
 
-        $statement= $this->_dbh->prepare($sql);
-
+        //3. Bind parameters
         $statement->bindParam(':name',$name,PDO::PARAM_STR);
         $statement->bindParam(':description',$description,PDO::PARAM_STR);
         $statement->bindParam(':transportation',$transportation,PDO::PARAM_STR);
+        $statement->bindParam(':event',$event,PDO::PARAM_INT);
+        $statement->bindParam(':latest',$latest,PDO::PARAM_INT);
 
-        $statement->execute;
+        //4. execute the statement
+        $statement->execute();
     }
 
     /**

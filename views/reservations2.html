@@ -133,8 +133,8 @@
                     <h6 id="form-header"> We pick up and drop off anywhere with in <em class="pickup">10 miles</em>
                         of downtown Yakima. Or anywhere in<strong class="pickup">
                             <em>Toppenish, Zillah, Grandview, Sunnyside, or Prosser</em></strong></h6>
-                    <form action="#" method="POST">
-                        <div class="row">
+                    <form  action="#" method="POST">
+                        <div class="row form1">
                             <div class="col">
                                 <input type="text" class="form-control" name="fname" value="{{ @fname }}"
                                        placeholder="First name">
@@ -150,7 +150,7 @@
                                 </check><br>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form1">
                             <label for="exampleFormControlInput1">Email address</label>
                             <input name="email" type="email" class="form-control" id="exampleFormControlInput1"
                                    placeholder="name@example.com" value= "{{ @email }}">
@@ -158,7 +158,7 @@
                                 <span class="err">{{ @errors['email'] }}</span>
                             </check><br>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form1">
                             <label for="exampleFormControlInput2">Phone Number</label>
                             <input name="phone" type="text" class="form-control" id="exampleFormControlInput2"
                                    value="{{ @phone }}">
@@ -166,7 +166,7 @@
                                 <span class="err">{{ @errors['phone'] }}</span>
                             </check><br>
                         </div>
-                        <div class="row">
+                        <div class="row form1">
                             <div class="col">
                                 <label for="exampleFormControlSelect1">Event Type</label>
                                 <select class="form-control" name="event_type" id="exampleFormControlSelect1">
@@ -198,7 +198,7 @@
                                 </check><br>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form1">
                             <div class="col datepicker">
                                 <label for="datepicker">Select Tour Date</label>
                                 <input class="datepicker form-control" id ="datepicker"  type="text"
@@ -279,22 +279,22 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function(){$("#custom-form").hide();
+    $(document).ready(function(){
+        $("#custom-form").hide();
+        $("#custom").change(function() {
+            if ($(this).val() == 'checked') {
+                $('#custom-form').show();
+                $('.form1').hide();
+            }});
+        $(function (){
+            $( "#datepicker" ).datepicker({
+                numberOfMonths: 2,
+                showButtonPanel: true,
+                dateFormat: 'yy-mm-dd'
+            })});
 
-    $("#custom").change(function() {
-    if ($(this).val() == 'checked') {
-        $('#custom-form').show();
-    } else {
-        $('#custom-form').hide();
-    }
-    });
     // $("#custom").trigger("change");
-    $(function (){
-        $( "#datepicker" ).datepicker({
-            numberOfMonths: 2,
-            showButtonPanel: true,
-            dateFormat: 'yy-mm-dd'
-        })});
+
     });
 </script>
 
