@@ -1,27 +1,22 @@
-window.onload= function(){
+$(document).ready(function(){
+    alert("Goodbye");
+    $("#custom-form").hide();
+    $("#custom").change(function() {
+        if ($(this).val() == 'checked') {
+            $('#custom-form').show();
+            $('.form1').hide();
+        }});
+    $(function (){
+        $( "#datepicker" ).datepicker({
+            numberOfMonths: 2,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd'
+        })});
 
-    $("#reservations").click(function(){
-        //$("#custom-form").hide();
-        alert("hello world")
+    // $("#custom").trigger("change");
 
-    });
-// $('#show').on('click',function() {
-//     //create a var with the name of num and value of input by the user
-//     var petid = $('#').val();
-//     //alert(id);
-//
-//     //Display pet id in the div
-//     //$('#detail').html(petid);
-//
-//     $.post(
-//         "lookup.php",
-//         {pid: petid},
-//         function(result){
-//             $('#detail').html(result);
-//         }
-//     );
+});
 
-};
 
 
 

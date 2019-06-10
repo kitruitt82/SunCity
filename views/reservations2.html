@@ -278,25 +278,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function(){
-        $("#custom-form").hide();
-        $("#custom").change(function() {
-            if ($(this).val() == 'checked') {
-                $('#custom-form').show();
-                $('.form1').hide();
-            }});
-        $(function (){
-            $( "#datepicker" ).datepicker({
-                numberOfMonths: 2,
-                showButtonPanel: true,
-                dateFormat: 'yy-mm-dd'
-            })});
-
-    // $("#custom").trigger("change");
-
-    });
-</script>
-
+<script src="js/event.js"></script>
 </body>
 </html>
