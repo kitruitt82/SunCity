@@ -1,6 +1,6 @@
 <?php
 $user = $_SERVER['USER'];
-require "/home/$user/config.php";
+require "/home2/$user/config.php";
 
 /**
  * 05/23/2019
@@ -158,7 +158,6 @@ class Database
         $statement->execute();
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
         return $result;
     }
 

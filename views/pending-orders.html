@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +49,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <repeat  group="{{ @orders }}" value="{{ @order }}">>
+                <repeat  group="{{ @orders }}" value="{{ @order }}">
                     <tr>
                         <td>{{ @order['fname'] }} {{ @order['lname'] }}</td>
                         <td>{{ @order['email'] }}</td>
@@ -79,5 +80,3 @@
 </div>
 </body>
 </html>
-
-

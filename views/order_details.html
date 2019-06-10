@@ -26,18 +26,16 @@
                             Contact Information: {{ @order['email'] }}  {{ @order['phone'] }}<br>
                             Tour-date: {{ @order['tour_date']}} <br>
                             start-time: {{ @order['start_time']}}<br>
-                        <form action="update-opportunity.php" method="get">
-                            <button class="btn btn-outline-dark float-left" name="edit" value="84">Edit</button>
-                        </form>
-                        <form action="delete-opportunity.php" method="get">
-                            <button class="btn btn-outline-dark" name="Delete" value="84">Delete</button>
+                        <form action="../orders" method="post">
+                            <button class="btn btn-outline-dark float-left" name="delete">Delete</button>
+                            <button class="btn btn-outline-dark float-left" name="done">Confirm</button>
+                            <button class="btn btn-outline-dark float-left" name="confirm">Cancel</button>
                         </form>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                 crossorigin="anonymous"></script>
@@ -45,8 +43,3 @@
 </div>
 </body>
 </html>
-
-
-
-
-

@@ -216,7 +216,7 @@ $f3->route('GET /detail/@order', function($f3, $params)
 
     $template = new Template();
     echo $template->render('views/order_details.html');
-
 });
+
 
 $f3->run();
