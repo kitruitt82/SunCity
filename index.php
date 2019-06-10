@@ -197,13 +197,27 @@ $f3->route('GET|POST /orders', function($f3){
     global $db;
 
     //retrieve all the orders from the database
-    $orders = $db->getPendingOrders();
+    $orders = $db->getAllOrders();
+    $p_order = $db->getPendingOrders();
 
     $f3->set('orders',$orders);
-
-
+    $f3->set('p_order',$p_order);
     $view = new Template();
     echo $view->render("views/pending-orders.html");
+
+});
+
+$f3->route('GET /detail/@order', function($f3, $params)
+{
+    global $db;
+
+    $order = $params['order'];
+    $order_details = $db->getOrderDetails($order);
+    $f3->set('order',$order_details);
+
+    $template = new Template();
+    echo $template->render('views/order_details.html');
+
 
 });
 
