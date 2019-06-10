@@ -1,6 +1,6 @@
 <?php
 $user = $_SERVER['USER'];
-require "/home/$user/config.php";
+require "/home2/$user/config.php";
 
 /**
  * 05/23/2019
@@ -125,8 +125,9 @@ class Database
         $statement->execute();
     }
 
+
     /**
-     * This sends a query request to the database and returns the result
+     * This sends a query request pending orders to the database and returns the result
      * @return String, returns the string result from the query request
      */
     function getPendingOrders()
@@ -144,19 +145,63 @@ class Database
     }
 
     /**
-     * This sends a query request to the database and returns the result
+     * This sends a query request all orders to the database and returns the result
      * @return String, returns the string result from the query request
      */
-    function getConfirmOrders()
+    function getAllOrders()
     {
         //Define the query
-        $sql = "SELECT * FROM requests WHERE confirm=1;";
+        $sql = "SELECT * FROM requests;";
 
         $statement = $this->_dbh->prepare($sql);
 
         $statement->execute();
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+
+    /**
+     * This sends a query request to get customized order from a given order_id
+     * @param $order_id the order id to retrieve the order name
+     * @return String, returns the string result from the query request
+     */
+    function getEventName($order_id)
+    {
+
+        //Define the query
+        $sql = "SELECT event_name FROM customized_order WHERE order_id=:order_id;";
+
+        $statement = $this->_dbh->prepare($sql);
+
+        $statement->bindParam(':order_id',$order_id,PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    /**
+     * This returns the string query from the database with the order details
+     * @param $order_id the order id parameter
+     * @return String, returns the string eesult from the query request
+     */
+    function getOrderDetails($order_id)
+    {
+        $sql = "Select * from requests, 
+          customized_order WHERE requests.order_id =:order_id and requests.order_id = customized_order.order_id;";
+
+        $statement = $this->_dbh->prepare($sql);
+
+        $statement->bindParam(':order_id',$order_id,PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $result;
     }
