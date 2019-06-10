@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 /**
  * @athor by Maria Gallardo, Katt Truitt
@@ -209,5 +208,4 @@ $f3->route('GET|POST /orders', function($f3){
 });
 
 $f3->run();
-=======
->>>>>>> 89e6eed7c5a33b93e6cce855ecbbfba087cddb42
+
