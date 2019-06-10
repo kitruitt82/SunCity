@@ -1,6 +1,83 @@
-<h1>Order List</h1>
-<ol>
-    <repeat group="{{ @orders }}" value="{{ @order }}">
-        <li>{{ @order['email'] }}"</li>
-    </repeat>
-</ol>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Orders</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/styles.css" type="text/css">
+
+</head>
+<body>
+
+<div class="container" id="main-header">
+    <nav class="navbar navbar-secondary" id="navigation">
+        <a href="home" name="link"><-Home</a>
+    </nav>
+    <div class="text-center"><h1 id="headtext">Welcome back administrator..</h1>
+        <div class="container border mb-4">
+            <!--check if there are any pending orders-->
+            <check if="{{ sizeof(@p_order)}}>=1">
+                <true>
+                    <h4>You have <span id="orders"><ins id="pending">{{ sizeof(@p_order)}}</ins>
+                    </span> new pending orders</h4>
+                </true>
+                <false>
+                    <h4>You don't have any pending orders</h4>
+                </false>
+            </check>
+        </div>
+
+        <div class="jumbotron">
+            <h2 class="text-center">Confirm Orders</h2>
+            <table id="table_id" class="display">
+                <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>phone</td>
+                    <td>tour_date</td>
+                    <td>time</td>
+                    <td>confirm</td>
+                    <td>Event details</td>
+                </tr>
+                </thead>
+                <tbody>
+                <repeat  group="{{ @orders }}" value="{{ @order }}">>
+                    <tr>
+                        <td>{{ @order['fname'] }} {{ @order['lname'] }}</td>
+                        <td>{{ @order['email'] }}</td>
+                        <td>{{ @order['phone'] }} </td>
+                        <td>{{ @order['tour_date'] }} </td>
+                        <td>{{ @order['start_time'] }} </td>
+                        <td>{{ var_export((bool)@order['confirm']) }} </td>
+                        <td><a class="btn btn-link" href="detail/{{ @order['order_id'] }}" id="user">View this order..</a></td>
+                    </tr>
+                </repeat>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+        <script type="text/javascript" charset="utf8"
+                src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+        <script>
+            $(document).ready( function () {
+                $('#table_id').DataTable();
+            });
+
+        </script>
+
+    </div>
+</div>
+</body>
+</html>
+
+
