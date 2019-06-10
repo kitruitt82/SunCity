@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    alert("Goodbye");
+
     $("#custom-form").hide();
     $("#custom").change(function() {
         if ($(this).val() == 'checked') {
@@ -12,9 +12,6 @@ $(document).ready(function(){
             showButtonPanel: true,
             dateFormat: 'yy-mm-dd'
         })});
-
-    // $("#custom").trigger("change");
-
 });
 
 
