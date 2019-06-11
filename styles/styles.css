@@ -92,3 +92,7 @@ label{
     background-color:#F6F6F6;
     text-align:center; font-size: 15px;
 }
+#pending_orders,#no_pending
+{
+    color: white;
+}
