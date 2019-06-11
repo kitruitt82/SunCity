@@ -25,11 +25,11 @@
             <!--check if there are any pending orders-->
             <check if="{{ sizeof(@p_order)}}>=1">
                 <true>
-                    <h4>You have <span id="orders"><ins id="pending">{{ sizeof(@p_order)}}</ins>
+                    <h4 id="pending_orders">You have <span id="orders"><ins id="pending">{{ sizeof(@p_order)}}</ins>
                     </span> new pending orders</h4>
                 </true>
                 <false>
-                    <h4>You don't have any pending orders</h4>
+                    <h4 id="no_pending">You don't have any pending orders</h4>
                 </false>
             </check>
         </div>
