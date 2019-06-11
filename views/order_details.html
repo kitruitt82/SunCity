@@ -28,7 +28,8 @@
                             start-time: {{ @order['start_time']}}<br>
                         <form action="../orders" method="post">
                             <button class="btn btn-outline-dark float-left" name="delete">Delete</button>
-                            <button class="btn btn-outline-dark float-left" name="done">Confirm</button>
+                            <button class="btn btn-outline-dark float-left" value="{{ @order['order_id'] }}"
+                        name="confirm">Confirm</button>
                             <button class="btn btn-outline-dark float-left" name="confirm">Cancel</button>
                         </form>
                         </p>
