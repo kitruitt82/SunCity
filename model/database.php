@@ -1,6 +1,6 @@
 <?php
 $user = $_SERVER['USER'];
-require "/home2/$user/config.php";
+require "/home/$user/config.php";
 
 /**
  * 05/23/2019
