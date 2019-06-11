@@ -194,6 +194,10 @@ $f3->route('GET|POST /administration', function($f3) {
 
 $f3->route('GET|POST /orders', function($f3){
     global $db;
+    if(!empty($_POST))
+    {
+        $db->confirmAppointment($_POST['confirm']);
+    }
 
     //retrieve all the orders from the database
     $orders = $db->getAllOrders();
@@ -213,6 +217,7 @@ $f3->route('GET /detail/@order', function($f3, $params)
     $order = $params['order'];
     $order_details = $db->getOrderDetails($order);
     $f3->set('order',$order_details);
+
 
     $template = new Template();
     echo $template->render('views/order_details.html');
