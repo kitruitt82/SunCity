@@ -191,8 +191,7 @@ class Database
      */
     function getOrderDetails($order_id)
     {
-        $sql = "Select * from requests, 
-          customized_order WHERE requests.order_id =:order_id and requests.order_id = customized_order.order_id;";
+        $sql = "Select * from requests WHERE requests.order_id =:order_id";
 
         $statement = $this->_dbh->prepare($sql);
 
@@ -203,6 +202,21 @@ class Database
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $result;
+    }
+
+    /**
+     * This returns the string query from the database with the order details
+     * @param $order_id the id from the order
+     */
+    function confirmAppointment($order_id)
+    {
+        $sql = "UPDATE requests SET confirm =1 WHERE order_id =:order_id;";
+
+        $statement = $this->_dbh->prepare($sql);
+
+        $statement->bindParam(':order_id',$order_id,PDO::PARAM_STR);
+
+        $statement->execute();
     }
 
     /**
